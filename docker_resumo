@@ -43,9 +43,34 @@ docker logs <cID>
 Deletando um container em execucao. Um parado nao precisa do -f:
 docker rm -f <cID>
 
+Comandos avançados com container
 
+Passando um nome para o container, um Alias. NEsse caso , testeunb
+docker run -ti -name testeunb unbuntu /bin/bash
 
 ADMINISTRANDO CONTAINER:
+
+Estando conectado no terminal de um container, digite o comando:
+docker inspect
+para ver detalhes apenas da memoria:
+docker inspect | grep -i mem
+
+Caso nao esteja conectado ao container, utilize o Container ID (cID)
+docker inspect <cID> 
+
+
+Habilitando Tresholds de Memoria ao Container:
+docker run -ti --memory 726m -name testeunb2 unbuntu /bin/bash
+
+Habilitando Tresholds de CPU ao Container:
+docker run -ti --memory 726m -name testeunb2 unbuntu /bin/bash
+
+Para atualizar a memoria de um Container je em utilizacao:
+
+docker update  --memory 512m -name testeunb2
+
+Verificando:
+docker inspect testeunb2 | grep -i mem
 
 
 
@@ -65,7 +90,7 @@ docker history – Exibe o histórico de comandos que foram executados dentro do
 docker images  – Lista as imagens disponíveis no host.
 docker import  – Importa uma imagem .tar para o host.
 docker info    – Exibe as informações sobre o host.
-docker inspect – Exibe r o json com todas as configurações do container.
+docker inspect – Exibe r o json com todas as configurações do container, como IP, porta, limite de memoria, CPU
 docker kill    – Da Poweroff no container.
 docker load    – Carrega a imagem de um arquivo .tar.
 docker login   – Registra ou faz o login em um servidor de registry.
